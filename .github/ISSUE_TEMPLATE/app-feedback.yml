@@ -1,0 +1,21 @@
+name: 理刻问题反馈
+description: 报告 Android 安装、登录、课表或资料问题
+title: "[问题] "
+body:
+  - type: markdown
+    attributes:
+      value: 请勿填写学号、密码、验证码或附上未脱敏的截图。涉及个人资料请通过校内 WeLink 私信联系作者。
+  - type: input
+    id: version
+    attributes:
+      label: 理刻版本和手机型号
+      placeholder: 例如 0.1.5，手机型号和系统版本
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 遇到了什么问题
+      description: 请写一下操作步骤、看到的提示和预期结果。
+    validations:
+      required: true
