@@ -1,10 +1,10 @@
 {
   "schema": 1,
   "package": "cn.codejoy.campuslife.pilot",
-  "versionCode": 6,
-  "versionName": "0.1.5-pilot",
-  "apk": "like-android-6.apk",
-  "size": 18400171,
-  "sha256": "4fece2f9293770a76c752782313411852e87e24f9c0da7c5d0df1bb4b48d2984",
-  "notes": "在登录页或「我的 → 关于理刻」检查更新。关于页新增三位作者、WeLink 私信与问题反馈。"
+  "versionCode": 7,
+  "versionName": "0.1.6-pilot",
+  "apk": "like-android-7.apk",
+  "size": 18408580,
+  "sha256": "b413ddb03e87aee480bf7da99b205dc88fded0c156c5665b3b91c737c52b129b",
+  "notes": "新增「今日」，按天查看课程和待交作业。点「问课程」可查当天、明天和下一节课，结果可打开对应条目。"
 }
