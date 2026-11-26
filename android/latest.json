@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "package": "cn.codejoy.campuslife.pilot",
+  "versionCode": 6,
+  "versionName": "0.1.5-pilot",
+  "apk": "like-android-6.apk",
+  "size": 18400171,
+  "sha256": "4fece2f9293770a76c752782313411852e87e24f9c0da7c5d0df1bb4b48d2984",
+  "notes": "在登录页或「我的 → 关于理刻」检查更新。关于页新增三位作者、WeLink 私信与问题反馈。"
+}
