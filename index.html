@@ -3,30 +3,129 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>下载理刻 Android</title>
+  <meta name="description" content="理刻的 iOS 和安卓安装、更新与反馈入口">
+  <title>理刻 · 安装与更新</title>
   <style>
-    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
-    body { margin: 0; line-height: 1.65; }
-    main { max-width: 34rem; margin: 9vh auto; padding: 0 24px; }
-    h1 { margin: 0 0 12px; font-size: 2rem; line-height: 1.2; }
-    .download { display: inline-block; margin: 12px 0; padding: 10px 20px; border-radius: 12px;
-      color: #fff; background: #a72d36; text-decoration: none; font-weight: 600; }
-    .details { opacity: .76; }
-    footer { margin-top: 24px; }
+    :root {
+      color-scheme: light dark;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      --background: #f6f5f3;
+      --surface: #fff;
+      --ink: #22201f;
+      --muted: #605b57;
+      --line: #e6e2de;
+      --accent: #a72d36;
+      --link: #922630;
+      --button-ink: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #151413;
+        --surface: #21201f;
+        --ink: #f4efec;
+        --muted: #c1b8b3;
+        --line: #393533;
+        --accent: #ec8c94;
+        --link: #f3a5ad;
+        --button-ink: #231719;
+      }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--background); color: var(--ink); line-height: 1.6; }
+    main { max-width: 48rem; margin: 0 auto; padding: clamp(32px, 8vw, 64px) 20px 32px; }
+    h1 { margin: 0; font-size: 2rem; line-height: 1.25; }
+    h2 { margin: 0; font-size: 1.25rem; line-height: 1.4; }
+    p { margin: 0; }
+    a { color: var(--link); text-underline-offset: .2em; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    header > p { margin-top: 6px; color: var(--muted); }
+    .platforms { display: grid; gap: 12px; margin-top: 24px; }
+    .panel { padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+    .platform-header { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
+    .version { color: var(--muted); font-size: .875rem; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin: 14px 0;
+      padding: 8px 16px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--button-ink);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .panel > p + p { margin-top: 10px; }
+    .panel > p { font-size: .9375rem; }
+    .update { color: var(--muted); }
+    .contact { margin-top: 12px; }
+    .contact > p { margin-top: 8px; }
+    .authors { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 8px 0 14px; padding: 0; list-style: none; }
+    .authors li { font-weight: 600; }
+    footer { margin-top: 20px; color: var(--muted); font-size: .8125rem; }
     footer a { color: inherit; }
+    @media (min-width: 42rem) {
+      .platforms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
   </style>
 </head>
 <body>
   <main>
-    <h1>理刻 Android</h1>
-    <p>课表、作业、课件和录播。</p>
-    <a class="download" href="./android/like-android-6.apk" download>下载 APK</a>
-    <p class="details">0.1.5 校内测试版</p>
-    <p>旧版可以覆盖安装。以后在「关于理刻」检查更新。</p>
-    <footer>
-      <a href="https://github.com/Cao150702/like-downloads/issues/new/choose">问题反馈</a>
-      · <a href="./NextChat-LICENSE.txt">第三方许可</a>
-    </footer>
+    <header>
+      <h1>理刻</h1>
+      <p>安装与更新</p>
+    </header>
+
+    <section class="platforms" aria-label="手机安装">
+      <article class="panel" aria-labelledby="android-title">
+        <div class="platform-header">
+          <h2 id="android-title">安卓</h2>
+          <p id="android-version" class="version">0.1.5 校内测试版</p>
+        </div>
+        <a id="android-download" class="button" href="./android/like-android-6.apk" download>下载 APK</a>
+        <p>用手机打开下载的 APK，按系统提示安装。旧版可以直接覆盖安装。</p>
+        <p class="update">后续在「我的 → 关于理刻 → 检查更新」下载新版，按系统提示完成安装。</p>
+      </article>
+
+      <article class="panel" aria-labelledby="ios-title">
+        <div class="platform-header">
+          <h2 id="ios-title">iOS</h2>
+          <p class="version">TestFlight 外测</p>
+        </div>
+        <a class="button" href="https://testflight.apple.com/join/Ek6bg8ng">打开 TestFlight 邀请</a>
+        <p>先从 App Store <a href="https://apps.apple.com/cn/app/testflight/id899247664">安装 TestFlight</a>。外测开放后，用 iPhone 打开邀请，接受并安装理刻。</p>
+        <p class="update">后续在 TestFlight 里的理刻页面更新。</p>
+      </article>
+    </section>
+
+    <section class="panel contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">联系与反馈</h2>
+      <p>校内可在 WeLink 搜索作者姓名并私信。</p>
+      <ul class="authors">
+        <li>曹天航</li>
+        <li>刘佳伟</li>
+        <li>季宇杰</li>
+      </ul>
+      <a href="https://github.com/Cao150702/like-downloads/issues/new/choose">提交问题反馈</a>
+    </section>
+
+    <footer><a href="./NextChat-LICENSE.txt">第三方许可</a></footer>
   </main>
+  <script>
+    async function updateAndroidDownload() {
+      const response = await fetch("./android/latest.json", { cache: "no-cache" });
+      if (!response.ok) return;
+      const release = await response.json();
+      if (release.schema !== 1 || release.package !== "cn.codejoy.campuslife.pilot"
+          || !Number.isInteger(release.versionCode) || release.versionCode < 6 || release.versionCode > 2100000000
+          || release.apk !== `like-android-${release.versionCode}.apk`
+          || typeof release.versionName !== "string" || !/^[A-Za-z0-9][A-Za-z0-9._+-]{0,63}$/.test(release.versionName)) {
+        return;
+      }
+      document.getElementById("android-download").setAttribute("href", `./android/${release.apk}`);
+      document.getElementById("android-version").textContent = `${release.versionName.replace(/-pilot$/, "")} 校内测试版`;
+    }
+    updateAndroidDownload().catch(() => {});
+  </script>
 </body>
 </html>
