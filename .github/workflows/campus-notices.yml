@@ -1,0 +1,63 @@
+name: Campus notices
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/campus-notices.yml'
+      - 'scripts/*notices.py'
+      - 'notices/**'
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - run: python3 -B -m unittest discover -s scripts -p 'test_collect_notices.py'
+      - name: Read the four official columns from the GitHub runner
+        run: python3 -B scripts/collect_notices.py --output "$RUNNER_TEMP/feed.json"
+
+  publish:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: campus-notices-publish
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      pages: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+      - run: python3 -B -m unittest discover -s scripts -p 'test_collect_notices.py'
+      - name: Collect, validate and save the public feed
+        run: |
+          python3 -B scripts/collect_notices.py
+          git add -- notices/v1/feed.json
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m '更新公开校园公告'
+            git push origin HEAD:main
+          fi
+      - name: Rebuild existing Pages site when public feed differs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          feed='https://cao150702.github.io/like-downloads/notices/v1/feed.json'
+          if curl --silent --fail --max-time 12 "$feed?run=$GITHUB_RUN_ID" -o "$RUNNER_TEMP/published-feed.json" \
+            && cmp -s notices/v1/feed.json "$RUNNER_TEMP/published-feed.json"; then
+            echo 'The existing site already serves this feed.'
+          else
+            gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --jq '{status,url}'
+          fi
