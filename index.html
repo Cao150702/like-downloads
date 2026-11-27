@@ -3,115 +3,234 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="理刻的 iOS 和安卓安装、更新与反馈入口">
-  <title>理刻 · 安装与更新</title>
+  <meta name="description" content="理刻的苹果手机和安卓手机安装指引">
+  <title>安装理刻</title>
   <style>
     :root {
       color-scheme: light dark;
       font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-      --background: #f6f5f3;
+      --background: #f7f6f4;
       --surface: #fff;
-      --ink: #22201f;
-      --muted: #605b57;
-      --line: #e6e2de;
-      --accent: #a72d36;
-      --link: #922630;
+      --ink: #242120;
+      --muted: #645e59;
+      --line: #e4dfda;
+      --accent: #8a2435;
+      --soft: #faeeef;
       --button-ink: #fff;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --background: #151413;
-        --surface: #21201f;
-        --ink: #f4efec;
-        --muted: #c1b8b3;
-        --line: #393533;
-        --accent: #ec8c94;
-        --link: #f3a5ad;
-        --button-ink: #231719;
+        --background: #171514;
+        --surface: #211f1e;
+        --ink: #f6efeb;
+        --muted: #c8bdb7;
+        --line: #403b38;
+        --accent: #f0a5ae;
+        --soft: #382329;
+        --button-ink: #28191b;
       }
     }
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     body { margin: 0; background: var(--background); color: var(--ink); line-height: 1.6; }
-    main { max-width: 48rem; margin: 0 auto; padding: clamp(32px, 8vw, 64px) 20px 32px; }
-    h1 { margin: 0; font-size: 2rem; line-height: 1.25; }
-    h2 { margin: 0; font-size: 1.25rem; line-height: 1.4; }
-    p { margin: 0; }
-    a { color: var(--link); text-underline-offset: .2em; }
-    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-    header > p { margin-top: 6px; color: var(--muted); }
-    .platforms { display: grid; gap: 12px; margin-top: 24px; }
-    .panel { padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
-    .platform-header { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
-    .version { color: var(--muted); font-size: .875rem; }
+    main { width: min(100%, 35rem); margin: 0 auto; padding: 32px 16px max(24px, env(safe-area-inset-bottom)); }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: 2rem; line-height: 1.2; letter-spacing: -.025em; }
+    h2 { font-size: 1.12rem; line-height: 1.4; }
+    a { color: var(--accent); text-underline-offset: .2em; }
+    :is(a, button, summary, input):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    header p { margin-top: 6px; color: var(--muted); }
+    .phones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin: 22px 0 12px; }
+    .phone {
+      display: grid;
+      gap: 2px;
+      align-content: center;
+      min-height: 67px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--surface);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .phone[aria-current="true"] { background: var(--soft); border-color: var(--accent); }
+    .phone small { color: var(--muted); font-size: .78rem; }
+    .panel { margin-bottom: 12px; padding: 17px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); }
+    .handoff { background: var(--soft); border-color: var(--accent); }
+    .handoff p { margin-top: 7px; color: var(--muted); font-size: .87rem; }
+    .handoff ol { margin: 9px 0 12px; padding-left: 1.35em; }
+    .handoff li + li { margin-top: 2px; }
+    .panel-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; }
+    .version { color: var(--muted); font-size: .8rem; }
+    .steps { margin: 12px 0 0; padding-left: 1.35em; }
+    .steps li + li { margin-top: 16px; }
+    .steps strong { display: block; font-size: .94rem; }
+    .steps p { margin: 3px 0 0; color: var(--muted); font-size: .88rem; }
     .button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       min-height: 44px;
-      margin: 14px 0;
-      padding: 8px 16px;
-      border-radius: 10px;
+      padding: 7px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
       background: var(--accent);
       color: var(--button-ink);
-      font-weight: 600;
+      font: inherit;
+      font-size: .91rem;
+      font-weight: 650;
       text-decoration: none;
+      cursor: pointer;
     }
-    .panel > p + p { margin-top: 10px; }
-    .panel > p { font-size: .9375rem; }
-    .update { color: var(--muted); }
-    .contact { margin-top: 12px; }
-    .contact > p { margin-top: 8px; }
-    .authors { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 8px 0 14px; padding: 0; list-style: none; }
-    .authors li { font-weight: 600; }
-    footer { margin-top: 20px; color: var(--muted); font-size: .8125rem; }
-    footer a { color: inherit; }
-    @media (min-width: 42rem) {
-      .platforms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
+    .button.secondary { background: var(--surface); color: var(--accent); }
+    .steps .button { margin-top: 7px; }
+    .copy-url { width: 100%; min-height: 44px; margin-top: 8px; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; }
+    .copy-result:not(:empty) { margin-top: 7px; color: var(--ink); }
+    details { border-top: 1px solid var(--line); margin-top: 14px; }
+    summary { min-height: 44px; padding-top: 11px; cursor: pointer; font-size: .88rem; font-weight: 550; }
+    details p { font-size: .86rem; color: var(--muted); }
+    .contact { margin-top: 18px; color: var(--muted); font-size: .88rem; }
+    .contact h2 { margin-bottom: 4px; color: var(--ink); }
+    .authors { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 6px 0; padding: 0; list-style: none; color: var(--ink); }
+    footer { margin-top: 16px; font-size: .78rem; }
   </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>理刻</h1>
-      <p>安装与更新</p>
+      <h1>安装理刻</h1>
+      <p>在手机上查看课表、作业和课件。</p>
     </header>
 
-    <section class="platforms" aria-label="手机安装">
-      <article class="panel" aria-labelledby="android-title">
-        <div class="platform-header">
-          <h2 id="android-title">安卓</h2>
-          <p id="android-version" class="version">0.1.6 校内测试版</p>
-        </div>
-        <a id="android-download" class="button" href="./android/like-android-7.apk" download>下载 APK</a>
-        <p>用手机打开下载的 APK，按系统提示安装。旧版可以直接覆盖安装。</p>
-        <p class="update">后续在「我的 → 关于理刻 → 检查更新」下载新版，按系统提示完成安装。</p>
-      </article>
+    <nav class="phones" aria-label="选择手机类型">
+      <a class="phone" href="#iphone" data-phone="ios"><strong>苹果手机</strong><small>iPhone、iPad</small></a>
+      <a class="phone" href="#android" data-phone="android"><strong>安卓手机</strong><small>小米、OPPO、vivo 等</small></a>
+    </nav>
 
-      <article class="panel" aria-labelledby="ios-title">
-        <div class="platform-header">
-          <h2 id="ios-title">iOS</h2>
-          <p class="version">TestFlight 外测</p>
-        </div>
-        <a class="button" href="https://testflight.apple.com/join/Ek6bg8ng">打开 TestFlight 邀请</a>
-        <p>先从 App Store <a href="https://apps.apple.com/cn/app/testflight/id899247664">安装 TestFlight</a>。外测开放后，用 iPhone 打开邀请，接受并安装理刻。</p>
-        <p class="update">后续在 TestFlight 里的理刻页面更新。</p>
-      </article>
+    <section id="wechat-guide" class="panel handoff" aria-labelledby="wechat-title" hidden>
+      <h2 id="wechat-title">先在浏览器中打开</h2>
+      <ol>
+        <li>点微信右上角的「···」。</li>
+        <li>选「在浏览器打开」或「在 Safari 中打开」。</li>
+      </ol>
+      <button class="button" id="copy-link" type="button">复制安装页链接</button>
+      <p>菜单里找不到时，复制链接，在 Safari 或手机浏览器的地址栏粘贴。</p>
+      <p id="copy-result" class="copy-result" role="status"></p>
+      <input id="copy-url" class="copy-url" aria-label="安装页链接" type="url" readonly hidden>
     </section>
 
-    <section class="panel contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">联系与反馈</h2>
-      <p>校内可在 WeLink 搜索作者姓名并私信。</p>
-      <ul class="authors">
+    <article id="iphone" class="panel" aria-labelledby="ios-title">
+      <div class="panel-header">
+        <h2 id="ios-title">苹果手机</h2>
+        <span class="version">TestFlight 外测</span>
+      </div>
+      <ol class="steps">
+        <li>
+          <strong>从 App Store 安装 TestFlight</strong>
+          <a class="button secondary" href="https://apps.apple.com/cn/app/testflight/id899247664">下载 TestFlight</a>
+        </li>
+        <li>
+          <strong>打开邀请，接受并安装理刻</strong>
+          <p>装好 TestFlight 后回到这页，再打开邀请。</p>
+          <a class="button" href="https://testflight.apple.com/join/Ek6bg8ng">打开 TestFlight 邀请</a>
+        </li>
+      </ol>
+      <details>
+        <summary>邀请打不开或提示不可用</summary>
+        <p>确认 TestFlight 已安装。若从微信打开，点右上角「···」，选择在浏览器打开本页，再点邀请。若 TestFlight 提示测试已满或不可用，请在页底反馈。</p>
+      </details>
+    </article>
+
+    <article id="android" class="panel" aria-labelledby="android-title">
+      <div class="panel-header">
+        <h2 id="android-title">安卓手机</h2>
+        <span id="android-version" class="version">0.1.6 校内测试版</span>
+      </div>
+      <ol class="steps">
+        <li>
+          <strong>下载理刻安装包</strong>
+          <a id="android-download" class="button" href="./android/like-android-7.apk" download>下载安卓安装包</a>
+        </li>
+        <li>
+          <strong>在「下载」里打开并安装</strong>
+          <p>打开浏览器的下载记录，或在「文件管理 → 下载」找到安装包。若系统询问是否允许此来源安装，按提示授权后返回继续。</p>
+        </li>
+      </ol>
+      <details>
+        <summary>下载打不开或想更新</summary>
+        <p>从微信打开时，先用右上角「···」切到浏览器。已装理刻可从「我的 → 关于理刻 → 检查更新」安装新版。</p>
+      </details>
+    </article>
+
+    <section class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">安装遇到问题？</h2>
+      <p>校内可在 WeLink 搜「曹天航」。<a href="https://github.com/Cao150702/like-downloads/issues/new/choose">提交问题反馈</a></p>
+      <ul class="authors" aria-label="开发团队">
         <li>曹天航</li>
         <li>刘佳伟</li>
         <li>季宇杰</li>
       </ul>
-      <a href="https://github.com/Cao150702/like-downloads/issues/new/choose">提交问题反馈</a>
     </section>
-
     <footer><a href="./NextChat-LICENSE.txt">第三方许可</a></footer>
   </main>
   <script>
+    const userAgent = navigator.userAgent;
+    const inWechat = /MicroMessenger/i.test(userAgent);
+    const appleMobile = /iPhone|iPad|iPod/i.test(userAgent)
+      || (/Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1);
+    const choices = [...document.querySelectorAll("[data-phone]")];
+    const panels = { ios: document.getElementById("iphone"), android: document.getElementById("android") };
+    const requested = new URLSearchParams(location.search).get("platform");
+    const anchor = { "#iphone": "ios", "#android": "android" }[location.hash];
+    const device = appleMobile ? "ios" : /Android/i.test(userAgent) ? "android" : null;
+    let selected = requested === "ios" || requested === "android" ? requested : anchor || device;
+
+    function showPhone(kind) {
+      selected = kind;
+      panels.ios.hidden = kind === "android";
+      panels.android.hidden = kind === "ios";
+      for (const choice of choices) {
+        if (choice.dataset.phone === kind) choice.setAttribute("aria-current", "true");
+        else choice.removeAttribute("aria-current");
+      }
+    }
+
+    function installationLink() {
+      const url = new URL(location.pathname, location.origin);
+      if (selected) url.searchParams.set("platform", selected);
+      return url.href;
+    }
+
+    showPhone(selected);
+    for (const choice of choices) {
+      choice.addEventListener("click", (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        showPhone(choice.dataset.phone);
+        history.replaceState(null, "", installationLink());
+        const input = document.getElementById("copy-url");
+        if (!input.hidden) input.value = installationLink();
+      });
+    }
+
+    document.getElementById("wechat-guide").hidden = !inWechat;
+    document.getElementById("copy-link").addEventListener("click", async () => {
+      const url = installationLink();
+      const input = document.getElementById("copy-url");
+      const result = document.getElementById("copy-result");
+      try {
+        await navigator.clipboard.writeText(url);
+        input.hidden = true;
+        result.textContent = "已复制安装页链接";
+      } catch {
+        input.value = url;
+        input.hidden = false;
+        input.focus();
+        input.select();
+        result.textContent = "长按下面的链接复制";
+      }
+    });
+
     async function updateAndroidDownload() {
       const response = await fetch("./android/latest.json", { cache: "no-cache" });
       if (!response.ok) return;
@@ -119,12 +238,11 @@
       if (release.schema !== 1 || release.package !== "cn.codejoy.campuslife.pilot"
           || !Number.isInteger(release.versionCode) || release.versionCode < 6 || release.versionCode > 2100000000
           || release.apk !== `like-android-${release.versionCode}.apk`
-          || typeof release.versionName !== "string" || !/^[A-Za-z0-9][A-Za-z0-9._+-]{0,63}$/.test(release.versionName)) {
-        return;
-      }
+          || typeof release.versionName !== "string" || !/^[A-Za-z0-9][A-Za-z0-9._+-]{0,63}$/.test(release.versionName)) return;
       document.getElementById("android-download").setAttribute("href", `./android/${release.apk}`);
       document.getElementById("android-version").textContent = `${release.versionName.replace(/-pilot$/, "")} 校内测试版`;
     }
+
     updateAndroidDownload().catch(() => {});
   </script>
 </body>
