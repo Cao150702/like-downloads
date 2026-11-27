@@ -1,10 +1,10 @@
 {
   "schema": 1,
   "package": "cn.codejoy.campuslife.pilot",
-  "versionCode": 7,
-  "versionName": "0.1.6-pilot",
-  "apk": "like-android-7.apk",
-  "size": 18408580,
-  "sha256": "b413ddb03e87aee480bf7da99b205dc88fded0c156c5665b3b91c737c52b129b",
-  "notes": "新增「今日」，按天查看课程和待交作业。点「问课程」可查当天、明天和下一节课，结果可打开对应条目。"
+  "versionCode": 8,
+  "versionName": "0.1.7-pilot",
+  "apk": "like-android-8.apk",
+  "size": 18450299,
+  "sha256": "12fbf3e98f0e8f14b7736d14d1a61ef2b82b7ee98b116cea6b0987207c005c6d",
+  "notes": "新增「明天的课」「接下来的课」「待交作业」三个桌面小组件。底栏新增学校、教务处和学院公告，可以打开官方原文。"
 }
