@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理刻公告网络测试</title>
+<style>
+  body { margin: 0; background: #faf6f3; color: #252128; font: 16px/1.6 system-ui, sans-serif; }
+  main { max-width: 28rem; margin: auto; padding: 2rem 1.25rem; }
+  h1 { margin: 0; font-size: 1.4rem; }
+  button { border: 0; border-radius: .6rem; padding: .55rem .85rem; margin-right: .35rem; font: inherit; color: white; background: #861b31; }
+  button:disabled { opacity: .6; }
+  output { display: block; margin: 1rem 0; white-space: pre-line; }
+</style>
+<main>
+  <h1>公告网络测试</h1>
+  <p>连接要测试的网络后，读取公告 6 次。测试约需半分钟。</p>
+  <button type="button">校园网</button>
+  <button type="button">手机流量</button>
+  <output aria-live="polite"></output>
+</main>
+<script>
+  const buttons = document.querySelectorAll("button");
+  const output = document.querySelector("output");
+  const columns = ["school", "teaching", "oece", "mechanical"];
+  const pause = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  async function probe() {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 4000);
+    const start = performance.now();
+    try {
+      const endpoint = new URL("./v1/feed.json", location.href);
+      endpoint.searchParams.set("probe", String(Date.now()));
+      const response = await fetch(endpoint, {
+        cache: "no-store", credentials: "omit", redirect: "error", signal: controller.signal
+      });
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      const feed = await response.json();
+      if (feed.version !== 1 || !columns.every(column => Array.isArray(feed.sources?.[column]))) {
+        throw new Error("数据格式错误");
+      }
+      return { ms: Math.round(performance.now() - start) };
+    } catch (error) {
+      return { error: controller.signal.aborted ? "超时" : (error instanceof TypeError ? "连接失败" : error.message) };
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+  for (const button of buttons) button.addEventListener("click", async () => {
+    for (const item of buttons) item.disabled = true;
+    const network = button.textContent;
+    const results = [];
+    try {
+      for (let index = 0; index < 6; index++) {
+        output.textContent = network + " · 正在测试 " + (index + 1) + "/6";
+        results.push(await probe());
+        if (index < 5) await pause(600);
+      }
+      const times = results.flatMap(result => result.ms == null ? [] : [result.ms]).sort((a, b) => a - b);
+      const lines = [network + " · 成功 " + times.length + "/6"];
+      if (times.length) {
+        const middle = Math.floor(times.length / 2);
+        const median = times.length % 2 ? times[middle] : Math.round((times[middle - 1] + times[middle]) / 2);
+        lines.push("中位 " + median + " ms · 最慢 " + times.at(-1) + " ms");
+      }
+      lines.push(results.map(result => result.error || result.ms + " ms").join(" / "));
+      output.textContent = lines.join("\n");
+    } finally {
+      for (const item of buttons) item.disabled = false;
+    }
+  });
+</script>
