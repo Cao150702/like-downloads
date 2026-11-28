@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 790" width="760" height="790" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif">
+<rect width="760" height="790" rx="16" fill="#ffffff"/>
+<rect x="0" y="0" width="760" height="90" rx="16" fill="#9e1b32"/>
+<rect x="0" y="70" width="760" height="20" fill="#9e1b32"/>
+<text x="34" y="42" font-size="24" font-weight="700" fill="#ffffff">上海理工大学作息时间表</text>
+<text x="34" y="68" font-size="13.5" fill="#fbe8eb">第 1–13 节上课时间 · 每节 40 分钟 · 常规小课间 5 分钟</text>
+<rect x="34" y="114" width="692" height="32" rx="8" fill="#f7f1f2"/>
+<text x="48" y="135" font-size="14" font-weight="700" fill="#9e1b32">上午</text>
+<rect x="34" y="152" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="190" x2="726" y2="190" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="159" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="176" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 1 节</text>
+<text x="148" y="176" font-size="16" font-weight="600" fill="#29252b">08:00 – 08:40</text>
+<rect x="34" y="190" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="228" x2="726" y2="228" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="197" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="214" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 2 节</text>
+<text x="148" y="214" font-size="16" font-weight="600" fill="#29252b">08:45 – 09:25</text>
+<text x="710" y="213" text-anchor="end" font-size="12.5" fill="#7a7076">本节后课间休息 20 分钟</text>
+<rect x="34" y="228" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="266" x2="726" y2="266" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="235" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="252" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 3 节</text>
+<text x="148" y="252" font-size="16" font-weight="600" fill="#29252b">09:45 – 10:25</text>
+<rect x="34" y="266" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="304" x2="726" y2="304" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="273" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="290" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 4 节</text>
+<text x="148" y="290" font-size="16" font-weight="600" fill="#29252b">10:30 – 11:10</text>
+<rect x="34" y="304" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="342" x2="726" y2="342" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="311" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="328" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 5 节</text>
+<text x="148" y="328" font-size="16" font-weight="600" fill="#29252b">11:15 – 11:55</text>
+<rect x="34" y="358" width="692" height="32" rx="8" fill="#f7f1f2"/>
+<text x="48" y="379" font-size="14" font-weight="700" fill="#9e1b32">下午</text>
+<rect x="34" y="396" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="434" x2="726" y2="434" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="403" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="420" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 6 节</text>
+<text x="148" y="420" font-size="16" font-weight="600" fill="#29252b">13:00 – 13:40</text>
+<rect x="34" y="434" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="472" x2="726" y2="472" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="441" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="458" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 7 节</text>
+<text x="148" y="458" font-size="16" font-weight="600" fill="#29252b">13:45 – 14:25</text>
+<text x="710" y="457" text-anchor="end" font-size="12.5" fill="#7a7076">本节后课间休息 20 分钟</text>
+<rect x="34" y="472" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="510" x2="726" y2="510" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="479" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="496" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 8 节</text>
+<text x="148" y="496" font-size="16" font-weight="600" fill="#29252b">14:45 – 15:25</text>
+<rect x="34" y="510" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="548" x2="726" y2="548" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="517" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="534" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 9 节</text>
+<text x="148" y="534" font-size="16" font-weight="600" fill="#29252b">15:30 – 16:10</text>
+<rect x="34" y="548" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="586" x2="726" y2="586" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="555" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="572" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 10 节</text>
+<text x="148" y="572" font-size="16" font-weight="600" fill="#29252b">16:15 – 16:55</text>
+<rect x="34" y="602" width="692" height="32" rx="8" fill="#f7f1f2"/>
+<text x="48" y="623" font-size="14" font-weight="700" fill="#9e1b32">晚上</text>
+<rect x="34" y="640" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="678" x2="726" y2="678" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="647" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="664" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 11 节</text>
+<text x="148" y="664" font-size="16" font-weight="600" fill="#29252b">18:00 – 18:40</text>
+<rect x="34" y="678" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="716" x2="726" y2="716" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="685" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="702" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 12 节</text>
+<text x="148" y="702" font-size="16" font-weight="600" fill="#29252b">18:45 – 19:25</text>
+<rect x="34" y="716" width="692" height="38" fill="#ffffff"/>
+<line x1="34" y1="754" x2="726" y2="754" stroke="#ede7e8" stroke-width="1"/>
+<rect x="48" y="723" width="74" height="24" rx="6" fill="#faecee"/>
+<text x="85" y="740" text-anchor="middle" font-size="13.5" font-weight="600" fill="#9e1b32">第 13 节</text>
+<text x="148" y="740" font-size="16" font-weight="600" fill="#29252b">19:30 – 20:10</text>
+<text x="34" y="768" font-size="12" fill="#7a7076">常见连排参考：1–2节 08:00–09:25 · 3–4节 09:45–11:10 · 6–7节 13:00–14:25 · 8–9节 14:45–16:10 · 11–12节 18:00–19:25</text>
+</svg>
